@@ -24,36 +24,12 @@ public class AccountController {
     @Autowired
     private AccountService accountService;
 
-//    @RequestMapping("/findAll")
-////    public String finAll(Model model) {
-////        List<Account> list = accountService.findAll();
-////        model.addAttribute("list", list);
-////        return "list";
-////    }
-
-
     //保存
     @RequestMapping("/save")
     public void save(Account account, HttpServletRequest request, HttpServletResponse response) throws IOException {
         accountService.saveAccount(account);
         response.sendRedirect(request.getContextPath() + "/account/findAll");
         return;
-    }
-
-    @RequestMapping("/login")
-    public String login(HttpServletRequest request, Model model, HttpServletResponse response) {
-        Account account = accountService.getUserByName(request.getParameter("user_name"));
-        if (account == null) {
-            model.addAttribute("msg", "用户名未注册");
-            return "/account";
-        }
-        String password = account.getPassword();
-        if (password.equals(request.getParameter("password"))) {
-            return "/userList";
-        } else {
-            model.addAttribute("msg", "用户名或密码错误");
-            return "/account";
-        }
     }
 
     @RequestMapping("/loginAjax")

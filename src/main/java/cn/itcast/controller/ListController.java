@@ -44,10 +44,12 @@ public class ListController {
 //    }
 
     @RequestMapping("/findAll")
-    public @ResponseBody List<Account> finAll(ModelMap model) {
-//        List<Account> list = accountService.findAll();
-//        JSONArray s=JSONArray.fromObject(list);
-//        model.addAttribute("s", accountService.findAll());
+    public @ResponseBody List<Account> finAll() {
         return accountService.findAll();
+    }
+
+    @RequestMapping("/addUser")
+    public @ResponseBody void addUser(Account account){
+        accountService.addUser(account);
     }
 }

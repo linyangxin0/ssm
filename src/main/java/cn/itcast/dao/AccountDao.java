@@ -21,4 +21,8 @@ public interface AccountDao {
 //保存账户信息
     @Insert("insert into account (user_name,password) values (#{user_name},#{password})")
     public void saveAccount(Account account);
+
+//    添加账户
+    @Insert("insert into account (user_name,sex,age,mobile_phone,address) values (#{user_name},#{sex},#{age},#{mobile_phone},#{address})")
+    public void addUser(Account account);
 }

@@ -14,4 +14,7 @@ public interface AccountService {
     //保存账户信息
     public void saveAccount(Account account);
 
+//    添加账户
+    public void addUser(Account account);
+
 }

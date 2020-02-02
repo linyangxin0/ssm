@@ -9,12 +9,12 @@ $(function($){
 				contentType:'application/json',
 				dataType:"json",
 				success:function (data) {
-					// var jsonStr = JSON.stringify(data);
-					// alert(jsonStr);
+					var jsonStr = JSON.stringify(data);
+					alert(jsonStr);
 					// request.success({
 					// 	row : data
 					// });
-					$('#usertab').bootstrapTable('load', data);
+					// $('#usertab').bootstrapTable('load', data);
 				},
 				error: function (XMLHttpRequest, textStatus, errorThrown) {
 					// 状态码

@@ -22,9 +22,13 @@ public class AccountServiceImpl implements AccountService {
         return accountDao.getUserByName(user_name);
     }
 
-
     //保存账户信息
     public void saveAccount(Account account){
         accountDao.saveAccount(account);
+    }
+
+//    添加账户
+    public void addUser(Account account){
+        accountDao.addUser(account);
     }
 }
