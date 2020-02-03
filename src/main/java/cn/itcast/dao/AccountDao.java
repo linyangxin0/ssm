@@ -1,6 +1,7 @@
 package cn.itcast.dao;
 
 import cn.itcast.domain.Account;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
@@ -25,4 +26,8 @@ public interface AccountDao {
 //    添加账户
     @Insert("insert into account (user_name,sex,age,mobile_phone,address,password) values (#{user_name},#{sex},#{age},#{mobile_phone},#{address},#{password})")
     public void addUser(Account account);
+
+//    根据id删除账户
+    @Delete("delete from account where id=#{id}")
+    public void deleteUserById(int id);
 }

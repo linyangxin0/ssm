@@ -31,4 +31,9 @@ public class AccountServiceImpl implements AccountService {
     public void addUser(Account account){
         accountDao.addUser(account);
     }
+
+    //    根据id删除账户
+    public void delUser(int id){
+        accountDao.deleteUserById(id);
+    }
 }

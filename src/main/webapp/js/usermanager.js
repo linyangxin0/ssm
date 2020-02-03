@@ -1,4 +1,21 @@
 // JavaScript Document
+// function addFunctionAlty(value, row, index) {
+// // 	return [
+// // 		'<button id="edit_btn" type="button" class="btn btn-default">编辑</button>',
+// // 		'<button id="del_btn" type="button" class="btn btn-default">删除</button>',
+// // 	].join('');
+// // }
+// // window.operateEvents = {
+// // 	'click #edit_btn': function (e, value, row, index) {
+// // 		delUser();
+// // 		// alert(row.name);
+// // 		$("#upload").modal('show');
+// // 	}, 'click #del_btn': function (e, value, row, index) {
+// //
+// // 		$("#upload").modal('show');
+// // 	}
+// // };
+
 $(function($){
 	$('#userTable').bootstrapTable({
 		url:"/List/findAll",
@@ -52,6 +69,11 @@ $(function($){
 				// title:'住址信息',
 				align:"center",
 				valign:'middle',
+			// },{
+			// 	field: 'operate',
+			// 	title: '操作',
+			// 	events: operateEvents,//给按钮注册事件
+			// 	formatter: addFunctionAlty//表格中增加按钮
 			}
 		],
 	});
@@ -89,33 +111,34 @@ function addUser(){
 		context:this
 	});
 }
-// $("#addUser_btn").bind("click",addUser());
 
 
-// 删除用户
-// function delUser(){
-// 	var selects=$table.bootstrapTable("getSelections");
-// 	if(selects.length==0){
-// 		return;
-// 	}
-//
-// 	var userIds="";
-// 	for(var i=0;i<selects.length;i++){
-// 		userIds=userIds+selects[i].id+",";
-// 	}
-// 	var param={
-// 		userIds:userIds
-// 	};
-// 	$.ajax({
-// 		url:"/UserManager//deleteUsersController.do",
-// 		data:param,
-// 		success:function(data){
-// 			if((typeof(data)!="undefined")&&(data==0)){
-// 				$table.bootstrapTable('refresh');
-// 			}
-// 			$("#remove").attr("disabled","disabled");
-// 		},
-// 		context:this
-// 	});
-// }
-// $("#remove").bind("click",delUser);
+//删除用户
+function delUser(){
+	var selects=$('#userTable').bootstrapTable("getSelections");
+	if(selects.length==0){
+		return;
+	}
+
+	var myArray=new Array();
+	for(var i=0;i<selects.length;i++)
+		myArray[i]=selects[i].id;
+
+	var param={
+		userIds:myArray
+	};
+	$.ajax({
+		url:"/List/delUser",
+		contentType : 'application/json;charset=utf-8',
+		data:param,
+		success:function(data){
+			if((typeof(data)!="undefined")&&(data==0)){
+				$('#userTable').bootstrapTable('refresh');
+			}
+			alert("删除成功");
+		},
+		error:function () {
+			alert("删除失败");
+		}
+	});
+}

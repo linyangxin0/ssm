@@ -31,6 +31,9 @@
         <button id="add" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
             添加
         </button>
+        <button id="del_user_btn" class="btn btn-primary" onclick="delUser()">
+            删除
+        </button>
     </div>
 <%--    <table id="usertab"--%>
 <%--           data-toolbar="toolbar"--%>

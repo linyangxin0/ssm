@@ -17,4 +17,6 @@ public interface AccountService {
 //    添加账户
     public void addUser(Account account);
 
+//    根据id删除账户
+    public void delUser(int id);
 }
