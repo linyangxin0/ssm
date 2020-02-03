@@ -36,4 +36,28 @@ public class AccountServiceImpl implements AccountService {
     public void delUser(int id){
         accountDao.deleteUserById(id);
     }
+
+//    根据id更新账户信息
+//    public void updateUserMessage(Account account){
+//        accountDao.updateUserNameById(account.getUser_name(),account.getId());
+//        accountDao.updateSexById(account.getSex(),account.getId());
+//        accountDao.updateAgeById(account.getAge(),account.getId());
+//        accountDao.updateMobilePhoneById(account.getMobile_phone(),account.getId());
+//        accountDao.updateAddressById(account.getAddress(),account.getId());
+//    }
+    public void updateUserNameById(Account account){
+        accountDao.updateUserNameById(account);
+    }
+    public void updateSexById(Account account){
+        accountDao.updateSexById(account);
+    }
+    public void updateAgeById(Account account){
+        accountDao.updateAgeById(account);
+    }
+    public void updateMobilePhoneById(Account account){
+        accountDao.updateMobilePhoneById(account);
+    }
+    public void updateAddressById(Account account){
+        accountDao.updateAddressById(account);
+    }
 }

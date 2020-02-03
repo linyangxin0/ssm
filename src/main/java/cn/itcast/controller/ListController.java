@@ -27,25 +27,6 @@ public class ListController {
     @Autowired
     private AccountService accountService;
 
-//    @RequestMapping("/findAll")
-//    public ModelAndView finAll(HttpServletRequest arg0, HttpServletResponse arg1) throws IOException {
-//        List<Account> list = accountService.findAll();
-//        arg1.setHeader("Content-type", "text/json;charset=UTF-8");
-//        JSONArray jsonArray=new JSONArray();
-//        jsonArray.addAll(list);
-//        byte[] reArr=jsonArray.toString().getBytes();
-//        arg1.getOutputStream().write(reArr);
-//        return null;
-//    }
-
-//    @RequestMapping("/findAll")
-//    public @ResponseBody Object finAll(ModelMap model) {
-//        List<Account> list = accountService.findAll();
-//        JSONArray s=JSONArray.fromObject(list);
-//        model.addAttribute("list", s);
-//        return "list";
-//    }
-
     @RequestMapping("/findAll")
     public @ResponseBody List<Account> finAll() {
         return accountService.findAll();
@@ -62,5 +43,14 @@ public class ListController {
         for (int i=0;i<userIds.size();i++){
             accountService.delUser(userIds.get(i));
         }
+    }
+
+    @RequestMapping("/editUser")
+    public @ResponseBody void editUser(Account account){
+        accountService.updateUserNameById(account);
+        accountService.updateSexById(account);
+        accountService.updateAgeById(account);
+        accountService.updateMobilePhoneById(account);
+        accountService.updateAddressById(account);
     }
 }

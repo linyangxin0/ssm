@@ -4,6 +4,7 @@ import cn.itcast.domain.Account;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -30,4 +31,17 @@ public interface AccountDao {
 //    根据id删除账户
     @Delete("delete from account where id=#{id}")
     public void deleteUserById(int id);
+
+//    根据id更新账户信息
+    @Update("update account set user_name=#{user_name} where id=#{id}")
+    public void updateUserNameById(Account account);
+    @Update("update account set sex=#{sex} where id=#{id}")
+    public void updateSexById(Account account);
+    @Update("update account set age=#{age} where id=#{id}")
+    public void updateAgeById(Account account);
+    @Update("update account set mobile_phone=#{mobile_phone} where id=#{id}")
+    public void updateMobilePhoneById(Account account);
+    @Update("update account set address=#{address} where id=#{id}")
+    public void updateAddressById(Account account);
+
 }

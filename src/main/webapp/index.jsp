@@ -9,7 +9,7 @@
 <html>
 <head>
     <script src="js/jquery-3.4.1.js"></script>
-<%--    <script src="js/login.js"></script>--%>
+    <script src="js/login.js"></script>
     <link rel="stylesheet" type="text/css" href="css/login.css">
 
     <title>Title</title>
@@ -43,20 +43,5 @@
     </div>
 
 </div>
-<script type="text/javascript">
-    function check() {
-        $.post({
-            url:"account/loginAjax",
-            data:{"user_name":$("#user_name").val(),"password":$("#password").val()},
-            success:function (data) {
-                if(data!=""){
-                    alert(data);
-                }else {
-                    window.location.href="userList.jsp";
-                }
-            }
-        })
-    }
-</script>
 </body>
 </html>

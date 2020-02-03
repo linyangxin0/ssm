@@ -19,4 +19,13 @@ public interface AccountService {
 
 //    根据id删除账户
     public void delUser(int id);
+
+//    根据id更新账户信息
+//    public void updateUserMessage(Account account);
+    public void updateUserNameById(Account account);
+    public void updateSexById(Account account);
+    public void updateAgeById(Account account);
+    public void updateMobilePhoneById(Account account);
+    public void updateAddressById(Account account);
+
 }

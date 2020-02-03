@@ -1,20 +1,20 @@
 // JavaScript Document
-// function addFunctionAlty(value, row, index) {
-// // 	return [
-// // 		'<button id="edit_btn" type="button" class="btn btn-default">编辑</button>',
-// // 		'<button id="del_btn" type="button" class="btn btn-default">删除</button>',
-// // 	].join('');
-// // }
-// // window.operateEvents = {
-// // 	'click #edit_btn': function (e, value, row, index) {
-// // 		delUser();
-// // 		// alert(row.name);
-// // 		$("#upload").modal('show');
-// // 	}, 'click #del_btn': function (e, value, row, index) {
-// //
-// // 		$("#upload").modal('show');
-// // 	}
-// // };
+function addFunctionAlty(value, row, index) {
+	return [
+		'<button id="edit_btn" type="button" class="btn btn-default">编辑</button>'
+	].join('');
+}
+window.operateEvents = {
+	'click #edit_btn': function (e, value, row, index) {
+		$("#editModal").modal('show');
+		$('#edit_id').attr("value",row.id);
+		$('#edit_user_name').attr("value",row.user_name);
+		$('#edit_sex').val(row.sex);
+		$('#edit_age').attr("value",row.age);
+		$('#edit_mobile_phone').attr("value",row.mobile_phone);
+		$('#edit_address').attr("value",row.address);
+	},
+};
 
 $(function($){
 	$('#userTable').bootstrapTable({
@@ -69,11 +69,11 @@ $(function($){
 				// title:'住址信息',
 				align:"center",
 				valign:'middle',
-			// },{
-			// 	field: 'operate',
-			// 	title: '操作',
-			// 	events: operateEvents,//给按钮注册事件
-			// 	formatter: addFunctionAlty//表格中增加按钮
+			},{
+				field: 'operate',
+				// title: '操作',
+				events: operateEvents,//给按钮注册事件
+				formatter: addFunctionAlty//表格中增加按钮
 			}
 		],
 	});
@@ -119,11 +119,9 @@ function delUser(){
 	if(selects.length==0){
 		return;
 	}
-
 	var myArray=new Array();
 	for(var i=0;i<selects.length;i++)
 		myArray[i]=selects[i].id;
-
 	var param={
 		userIds:myArray
 	};
@@ -140,5 +138,42 @@ function delUser(){
 		error:function () {
 			alert("删除失败");
 		}
+	});
+}
+
+//修改账户信息
+function editUser() {
+	var id=$("#edit_id").val();
+	var userName=$("#edit_user_name").val();
+	var sex=$("#edit_sex").val();
+	var age=$("#edit_age").val();
+	var mobilephone=$("#edit_mobile_phone").val();
+	var address=$("#edit_address").val();
+
+	var param={
+		id:id,
+		user_name:userName,
+		sex:sex,
+		age:age,
+		mobile_phone:mobilephone,
+		address:address
+	};
+
+	$.ajax({
+		url:"/List/editUser",
+		data:param,
+		success:function(data){
+			if((typeof(data)!="undefined")&&(data==0)){
+				$('#userTable').bootstrapTable('refresh');
+				alert("修改成功”");
+			}
+		},
+		error:function(){
+			alert("修改失败");
+		},
+		complete:function(){
+			$('#editModal').modal('hide');
+		},
+		context:this
 	});
 }
