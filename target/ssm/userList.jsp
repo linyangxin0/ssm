@@ -5,7 +5,8 @@
   Time: 14:53
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" pageEncoding="UTF-8" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
@@ -17,7 +18,7 @@
     <script src="${pageContext.request.contextPath }/js/bootstrap-table.min.js"></script>
     <script src="${pageContext.request.contextPath }/js/bootstrap-table-locale-all.min.js"></script>
 
-    <script><%@include file="/js/userManager2.js" %></script>
+    <script src="${pageContext.request.contextPath }/js/usermanager.js"></script>
 
 
 </head>
@@ -45,18 +46,18 @@
            data-show-columns="ture">
         <thead>
         <tr>
+            <th></th>
             <th>编号</th>
             <th>用户名</th>
             <th>性别</th>
             <th>年龄</th>
             <th>电话</th>
             <th>住址</th>
-            <th>操作</th>
+<%--            <th>操作</th>--%>
         </tr>
         </thead>
-        <tbody>
-
-        </tbody>
+<%--        <tbody>--%>
+<%--        </tbody>--%>
     </table>
 </div>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -120,7 +121,7 @@
             </div>
             </form>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" id="addUser_btn">
+                <button type="button" class="btn btn-primary" id="addUser_btn" onclick="addUser()">
                     添加
                 </button>
                 <button type="button" class="btn btn-default"

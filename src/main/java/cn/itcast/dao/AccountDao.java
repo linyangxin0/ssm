@@ -23,6 +23,6 @@ public interface AccountDao {
     public void saveAccount(Account account);
 
 //    添加账户
-    @Insert("insert into account (user_name,sex,age,mobile_phone,address) values (#{user_name},#{sex},#{age},#{mobile_phone},#{address})")
+    @Insert("insert into account (user_name,sex,age,mobile_phone,address,password) values (#{user_name},#{sex},#{age},#{mobile_phone},#{address},#{password})")
     public void addUser(Account account);
 }
