@@ -48,7 +48,7 @@ public class AccountController {
         }
     }
 
-    @RequestMapping("logoutAjax")
+    @RequestMapping("/logoutAjax")
     public void logoutAjax(HttpServletRequest request){
         HttpSession session=request.getSession();
         session.invalidate();
