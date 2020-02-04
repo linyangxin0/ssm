@@ -188,7 +188,7 @@ function logout() {
 	$.ajax({
 		url:"/account/logoutAjax",
 		success:function () {
-			window.location.href="index.jsp";
+			window.location.href="login.jsp";
 		}
 	})
 }

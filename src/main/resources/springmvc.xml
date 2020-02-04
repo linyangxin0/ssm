@@ -29,8 +29,22 @@
     <!--    开始springmvc注解支持-->
     <mvc:annotation-driven/>
 
+<!--    配置拦截器-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+<!--            你要拦截的具体方法-->
+            <mvc:mapping path="/List/*"/>
+<!--            你不拦截的方法-->
+<!--            <mvc:exclude-mapping path=""/>-->
+
+<!--            配置拦截器对象-->
+            <bean class="cn.itcast.interceptor.MyInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
     <!--    配置异常处理器-->
     <bean id="sysExceptionResolver" class="cn.itcast.exception.SysExceptionResolver"/>
+
+
 
     <!--json格式数据转换的配置  -->
     <bean id="jsonConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">

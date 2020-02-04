@@ -6,7 +6,7 @@ function check() {
             if(data!=""){
                 alert(data);
             }else {
-                window.location.href="userList.jsp";
+                window.location.href="index.jsp";
             }
         }
     })

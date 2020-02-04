@@ -14,9 +14,11 @@
 <body>
     <h3>查询了所有账户</h3>
 
-    <c:forEach items="${list}" var="account">
-        ${account.user_name}
-    </c:forEach>
+<%--    <c:forEach items="${list}" var="account">--%>
+<%--        ${account.user_name}--%>
+<%--    </c:forEach>--%>
+
+    <h3>错误</h3>
 
 </body>
 </html>
