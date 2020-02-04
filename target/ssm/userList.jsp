@@ -26,6 +26,18 @@
 <div class="panel panel-default">
     <div class="panel-heading">
         用户信息管理
+        <%
+            if(session.getAttribute("user")!=null){
+        %>
+                ---欢迎<%=session.getAttribute("user")%>登录本系统---<a href="index.jsp" onclick="logout()">退出登录</a>
+        <%
+            }else {
+        %>
+                ---请先进行<a href="index.jsp">登录</a>
+       <%
+           }
+       %>
+
     </div>
     <div id="toolbar">
         <button id="add" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
@@ -70,6 +82,7 @@
                 <h4 class="modal-title" id="myModalLabel">
                     用户信息
                 </h4>
+
             </div>
             <form>
             <div class="modal-body">

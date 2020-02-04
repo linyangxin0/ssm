@@ -88,6 +88,11 @@ function addUser(){
 	var mobilephone=$("#mobile_phone").val();
 	var address=$("#address").val();
 
+	if(userName==""||sex==""||age==""||mobilephone==""||address==""||userName==null||sex==null||age==null||mobilephone==null||address==null){
+		alert("请正确输入账户信息");
+		return;
+	}
+
 	var param={
 		user_name:userName,
 		password:"123",
@@ -176,4 +181,14 @@ function editUser() {
 		},
 		context:this
 	});
+}
+
+
+function logout() {
+	$.ajax({
+		url:"/account/logoutAjax",
+		success:function () {
+			window.location.href="index.jsp";
+		}
+	})
 }

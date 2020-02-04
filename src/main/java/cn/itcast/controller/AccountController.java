@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
@@ -33,8 +34,7 @@ public class AccountController {
     }
 
     @RequestMapping("/loginAjax")
-    public @ResponseBody
-    void loginAjax(String user_name, String password,HttpServletResponse response) throws IOException {
+    public @ResponseBody void loginAjax(String user_name, String password,HttpServletResponse response,HttpServletRequest request) throws IOException {
         Account account = accountService.getUserByName(user_name);
         if(user_name.equals("")||password.equals("")){
             response.getWriter().print("Illegal input");
@@ -42,7 +42,16 @@ public class AccountController {
             response.getWriter().print("Account does not exist");
         }else if(!account.getPassword().equals(password)){
             response.getWriter().print("Wrong account or password");
+        }else {
+            HttpSession session = request.getSession();
+            session.setAttribute("user",user_name);
         }
+    }
+
+    @RequestMapping("logoutAjax")
+    public void logoutAjax(HttpServletRequest request){
+        HttpSession session=request.getSession();
+        session.invalidate();
     }
 
 }
