@@ -1,7 +1,6 @@
 /* CSS Document */
 
-*
-{
+*{
 	font-size: 9pt;
 	border: 0;
 	margin: 0;
@@ -9,9 +8,9 @@
 	font-family: "微软雅黑";
 }
 
+
 body
 {
-	background-color: aquamarine;
 	background-image: url("../images/light.png");
 	background-repeat: no-repeat;
 	background-position: center top;
@@ -19,7 +18,6 @@ body
 
 .logintop
 {
-	background-color: antiquewhite;
 	background-position: center top;
 	width:100%;
 	height: 60px;
@@ -30,7 +28,7 @@ body
 	background-image: url("../images/loginbg3.png");
 	background-repeat: no-repeat;
 	background-position: center top;
-	widows: 100%;
+	windows: 100%;
 	height: 100%;
 	overflow: hidden;
 }
@@ -80,18 +78,18 @@ body
 
 .loginuser
 {
-	width: 299px;
+	width: 343px;
 	height: 48px;
-	background-image: url("../images/loginuser.png");
+	background: url("../images/loginuser.png") no-repeat;
 	padding-left: 44px;
 	border: none;
 }
 
 .loginpwd
 {
-	width: 299px;
+	width: 343px;
 	height: 48px;
-	background-image: url("../images/loginpassword.png");
+	background: url("../images/loginpassword.png") no-repeat;
 	padding-left: 44px;
 	border: none;
 }
